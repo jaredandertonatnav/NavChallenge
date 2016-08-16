@@ -24,28 +24,6 @@ class SearchViewController: ViewController, UISearchBarDelegate, UITableViewDele
         self.prepareTableViewForKeyboard()
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SearchResultsCell")
-        let movie = results[indexPath.item]
-        if let title = movie.title {
-            cell?.textLabel?.text = title
-        }
-        
-        return cell!
-    }
-    
-    
-    func searchMoviesUrl() -> String {
-        return "https://api.themoviedb.org/3/search/movie"
-    }
     
     func searchMoviesParameters() -> Dictionary<String, AnyObject> {
         var params = Dictionary<String, AnyObject>()
@@ -65,14 +43,14 @@ class SearchViewController: ViewController, UISearchBarDelegate, UITableViewDele
     }
     
     func loadNextPage() {
+        // increment the page counter for the next page call
         resultsLoadPage += 1
         
         self.httpManager().GET(
-            self.searchMoviesUrl(),
+            Movie.searchMoviesUrl(),
             parameters: self.searchMoviesParameters(),
             success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject) in
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                    
+                
                 var tmpMovie: [Movie] = []
                 do {
                     let json = try NSJSONSerialization.JSONObjectWithData(operation.responseData!, options: .AllowFragments)
@@ -83,32 +61,59 @@ class SearchViewController: ViewController, UISearchBarDelegate, UITableViewDele
                         }
                     }
                     if let pageNum = json.objectForKey("page") as? Int {
-                        print("pageNum: \(pageNum)")
-                        // the api is the source of truth
+                        // the api is the source of truth, so overwrite the page counter variable
                         self.resultsLoadPage = pageNum;
                     }
                     if let pageNumCount = json.objectForKey("total_pages") as? Int {
-                        print("pageNumCount: \(pageNumCount)")
                         self.resultsPageCount = pageNumCount;
                     }
                 } catch {
                     //print("Error \(error)")
                 }
-                //self.results = tmpMovie
                 let tmpResults  = self.results
                 self.results    = tmpResults + tmpMovie
                 self.tableView.reloadData()
                 
-                //var IndexPathOfLastRow = NSIndexPath(forRow: tmpResults.count - 1, inSection: 0)
-                //self.tableView.insertRowsAtIndexPaths([IndexPathOfLastRow], withRowAnimation: UITableViewRowAnimation.Left)
-                
-                
             }, failure: { (operation: AFHTTPRequestOperation?, error: NSError) in
-                // 
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                //self.handleHttpFailure(operation, error: error)
+                self.handleHttpFailure(operation!, error: error)
             }
         )
+    }
+    
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return results.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("SearchResultsCell")
+        let movie = results[indexPath.item]
+        if let title = movie.title {
+            cell?.textLabel?.text = title
+        }
+        
+        if let posterPath = movie.poster_path {
+            let imageUrl = movie.fullImagePath(posterPath, width: 185)
+        
+            NSData.getFromCachedFileOrUrl(imageUrl, completion: { (imageData) in
+                let downloadedImage             = UIImage(data: imageData)
+                cell?.imageView?.contentMode    = .ScaleAspectFill
+                cell?.imageView?.image          = downloadedImage
+                cell?.imageView!.setNeedsLayout()
+                cell?.imageView!.setNeedsDisplay()
+            })
+        }
+        return cell!
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.item == results.count - 1 && resultsLoadPage < resultsPageCount {
+            loadNextPage()
+        }
     }
     
     
@@ -116,7 +121,6 @@ class SearchViewController: ViewController, UISearchBarDelegate, UITableViewDele
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if let text = searchBar.text {
             if text.characters.count > 0 {
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = true
                 query = text
                 
                 self.httpManager().operationQueue.cancelAllOperations()
@@ -125,13 +129,6 @@ class SearchViewController: ViewController, UISearchBarDelegate, UITableViewDele
             } else {
                 
             }
-        }
-        //print(searchText)
-    }
-    
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.item == results.count - 1 && resultsLoadPage < resultsPageCount {
-            loadNextPage()
         }
     }
     
@@ -147,5 +144,21 @@ class SearchViewController: ViewController, UISearchBarDelegate, UITableViewDele
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "loadMovieSegue" {
+        
+            let indexPath   = self.tableView.indexPathForCell(sender as! UITableViewCell)
+            let movie       = results[(indexPath?.item)!]
+            let vc          = segue.destinationViewController as! DetailViewController
+            vc.movieId      = movie.id
+            
+            // stop the search bar from being the first responder, 
+            // so when navigating back, the scroll point doesn't change
+            self.view.endEditing(true)
+            
+            return
+        }
     }
 }

@@ -46,6 +46,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="not-ZL-R5J" kind="show" identifier="loadMovieSegue" id="jKa-sb-do2"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -71,6 +74,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1094" y="369"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="E87-1r-c4j">
+            <objects>
+                <viewController id="not-ZL-R5J" customClass="DetailViewController" customModule="NavChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ELi-7A-ROu"/>
+                        <viewControllerLayoutGuide type="bottom" id="FR1-1g-FRN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5VF-c4-YD2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1H7-Xl-P3Y">
+                                <rect key="frame" x="0.0" y="64" width="600" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="k1N-gJ-0mF"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Labelyg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GDK-Na-mK2">
+                                <rect key="frame" x="20" y="203" width="560" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="K7x-gB-6dM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1H7-Xl-P3Y" firstAttribute="leading" secondItem="5VF-c4-YD2" secondAttribute="leadingMargin" constant="-20" id="4hU-OV-5yH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1H7-Xl-P3Y" secondAttribute="trailing" constant="-20" id="NVu-cU-7is"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="GDK-Na-mK2" secondAttribute="leading" id="TaU-gG-iJA"/>
+                            <constraint firstItem="1H7-Xl-P3Y" firstAttribute="top" secondItem="ELi-7A-ROu" secondAttribute="bottom" id="eUk-2f-W2U"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GDK-Na-mK2" secondAttribute="trailing" id="tLz-4Z-83j"/>
+                            <constraint firstItem="GDK-Na-mK2" firstAttribute="top" secondItem="ELi-7A-ROu" secondAttribute="bottom" constant="139" id="tYF-Wr-iI5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backdropImageView" destination="1H7-Xl-P3Y" id="euj-jL-TQb"/>
+                        <outlet property="movieTitleLabel" destination="GDK-Na-mK2" id="JTA-HI-LEd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8CU-yw-4ls" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1914" y="369"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xO5-P8-uym">
