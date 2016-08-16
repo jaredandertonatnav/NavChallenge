@@ -17,12 +17,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        defaultBackButton()
+    }
+    
+    func defaultBackButton() {
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
+    
 
 
     func prepareTableViewForKeyboard() {
@@ -57,6 +62,12 @@ class ViewController: UIViewController {
     @objc func keyboardWillHide(notification: NSNotification){
         self.tableView?.contentInset = edgeInsets!
         self.tableView?.scrollIndicatorInsets = UIEdgeInsetsZero
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }
 

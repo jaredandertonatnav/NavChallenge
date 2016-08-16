@@ -11,6 +11,7 @@
 
 #import "AFNetworking.h"
 #import "UIFont+SytemFontOverride.h"
+#import "UIImage+ImageEffects.h"
 
 
 #endif /* bridge_h */

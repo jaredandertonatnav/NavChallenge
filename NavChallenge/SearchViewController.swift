@@ -152,7 +152,7 @@ class SearchViewController: ViewController, UISearchBarDelegate, UITableViewDele
             let indexPath   = self.tableView.indexPathForCell(sender as! UITableViewCell)
             let movie       = results[(indexPath?.item)!]
             let vc          = segue.destinationViewController as! DetailViewController
-            vc.movieId      = movie.id
+            vc.movie        = movie
             
             // stop the search bar from being the first responder, 
             // so when navigating back, the scroll point doesn't change

@@ -22,6 +22,8 @@
 		67038EC51D61830F007CC8CD /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038EC41D61830F007CC8CD /* AlertController.swift */; };
 		67038EC71D620283007CC8CD /* UIView+NavChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038EC61D620283007CC8CD /* UIView+NavChallenge.swift */; };
 		67038ECB1D6242B8007CC8CD /* UIFont+SytemFontOverride.m in Sources */ = {isa = PBXBuildFile; fileRef = 67038ECA1D6242B8007CC8CD /* UIFont+SytemFontOverride.m */; };
+		67038ECD1D62AF81007CC8CD /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038ECC1D62AF81007CC8CD /* NavigationController.swift */; };
+		67038ED01D62B303007CC8CD /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 67038ECF1D62B303007CC8CD /* UIImage+ImageEffects.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,9 @@
 		67038EC61D620283007CC8CD /* UIView+NavChallenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+NavChallenge.swift"; sourceTree = "<group>"; };
 		67038EC91D6242B8007CC8CD /* UIFont+SytemFontOverride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+SytemFontOverride.h"; sourceTree = "<group>"; };
 		67038ECA1D6242B8007CC8CD /* UIFont+SytemFontOverride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+SytemFontOverride.m"; sourceTree = "<group>"; };
+		67038ECC1D62AF81007CC8CD /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		67038ECE1D62B303007CC8CD /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		67038ECF1D62B303007CC8CD /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		7628A65A0BD0CC3A546D2437 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F53C882EF0323371D9697532 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				67038E9D1D5EDF57007CC8CD /* NavChallenge */,
-				67038EC81D624276007CC8CD /* Misc */,
 				67038E9C1D5EDF57007CC8CD /* Products */,
 				4CE4D23CEE782743F6CE5D9B /* Pods */,
 				656340920CD071C9198F9F14 /* Frameworks */,
@@ -116,9 +120,13 @@
 		67038EB41D5EE2B6007CC8CD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				67038EB51D5EE2FF007CC8CD /* UIViewController+NavChallenge.swift */,
-				67038EBE1D601ABE007CC8CD /* NSData+NavChallenge.swift */,
 				67038EC61D620283007CC8CD /* UIView+NavChallenge.swift */,
+				67038EB51D5EE2FF007CC8CD /* UIViewController+NavChallenge.swift */,
+				67038ECE1D62B303007CC8CD /* UIImage+ImageEffects.h */,
+				67038ECF1D62B303007CC8CD /* UIImage+ImageEffects.m */,
+				67038EBE1D601ABE007CC8CD /* NSData+NavChallenge.swift */,
+				67038EC91D6242B8007CC8CD /* UIFont+SytemFontOverride.h */,
+				67038ECA1D6242B8007CC8CD /* UIFont+SytemFontOverride.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -127,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				67038EBC1D5EF0B9007CC8CD /* MovieModel.swift */,
+				67038ECC1D62AF81007CC8CD /* NavigationController.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -140,16 +149,6 @@
 				67038EC41D61830F007CC8CD /* AlertController.swift */,
 			);
 			name = "View Controllers";
-			sourceTree = "<group>";
-		};
-		67038EC81D624276007CC8CD /* Misc */ = {
-			isa = PBXGroup;
-			children = (
-				67038EC91D6242B8007CC8CD /* UIFont+SytemFontOverride.h */,
-				67038ECA1D6242B8007CC8CD /* UIFont+SytemFontOverride.m */,
-			);
-			name = Misc;
-			path = NavChallenge;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +274,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				67038EBD1D5EF0B9007CC8CD /* MovieModel.swift in Sources */,
+				67038ED01D62B303007CC8CD /* UIImage+ImageEffects.m in Sources */,
+				67038ECD1D62AF81007CC8CD /* NavigationController.swift in Sources */,
 				67038EC51D61830F007CC8CD /* AlertController.swift in Sources */,
 				67038EA11D5EDF57007CC8CD /* ViewController.swift in Sources */,
 				67038EB61D5EE2FF007CC8CD /* UIViewController+NavChallenge.swift in Sources */,

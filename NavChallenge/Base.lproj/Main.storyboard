@@ -87,31 +87,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1H7-Xl-P3Y">
-                                <rect key="frame" x="0.0" y="64" width="600" height="180"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultMovieBackground" translatesAutoresizingMaskIntoConstraints="NO" id="1H7-Xl-P3Y">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="k1N-gJ-0mF"/>
+                                    <constraint firstAttribute="height" constant="600" id="k1N-gJ-0mF"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="k1N-gJ-0mF"/>
+                                    </mask>
+                                </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Labelyg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GDK-Na-mK2">
-                                <rect key="frame" x="20" y="203" width="560" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Labelyg" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GDK-Na-mK2">
+                                <rect key="frame" x="52" y="25" width="496" height="31"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="K7x-gB-6dM"/>
+                                    <constraint firstAttribute="height" constant="51" id="F0S-Wb-rFC"/>
+                                    <constraint firstAttribute="height" constant="51" id="K7x-gB-6dM"/>
+                                    <constraint firstAttribute="height" constant="31" id="rw7-A9-Xu1"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="F0S-Wb-rFC"/>
+                                        <exclude reference="K7x-gB-6dM"/>
+                                    </mask>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1H7-Xl-P3Y" firstAttribute="leading" secondItem="5VF-c4-YD2" secondAttribute="leadingMargin" constant="-20" id="4hU-OV-5yH"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="GDK-Na-mK2" secondAttribute="leading" id="Adf-Of-Dle"/>
+                            <constraint firstItem="1H7-Xl-P3Y" firstAttribute="leading" secondItem="5VF-c4-YD2" secondAttribute="leadingMargin" constant="-20" id="KWD-yQ-8tE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1H7-Xl-P3Y" secondAttribute="trailing" constant="-20" id="NVu-cU-7is"/>
                             <constraint firstAttribute="leadingMargin" secondItem="GDK-Na-mK2" secondAttribute="leading" id="TaU-gG-iJA"/>
-                            <constraint firstItem="1H7-Xl-P3Y" firstAttribute="top" secondItem="ELi-7A-ROu" secondAttribute="bottom" id="eUk-2f-W2U"/>
+                            <constraint firstItem="GDK-Na-mK2" firstAttribute="leading" secondItem="5VF-c4-YD2" secondAttribute="leadingMargin" constant="32" id="WDV-C0-Zwm"/>
+                            <constraint firstItem="1H7-Xl-P3Y" firstAttribute="top" secondItem="GDK-Na-mK2" secondAttribute="bottom" constant="-56" id="Ygb-tf-3Oa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GDK-Na-mK2" secondAttribute="trailing" constant="32" id="dbZ-q1-Anf"/>
+                            <constraint firstItem="1H7-Xl-P3Y" firstAttribute="top" secondItem="ELi-7A-ROu" secondAttribute="bottom" constant="-64" id="eUk-2f-W2U"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1H7-Xl-P3Y" secondAttribute="trailing" constant="-20" id="fO8-gj-SCv"/>
+                            <constraint firstItem="1H7-Xl-P3Y" firstAttribute="top" secondItem="ELi-7A-ROu" secondAttribute="bottom" constant="-64" id="mn0-NQ-TaY"/>
+                            <constraint firstItem="FR1-1g-FRN" firstAttribute="top" secondItem="1H7-Xl-P3Y" secondAttribute="bottom" id="o8j-dO-sOc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GDK-Na-mK2" secondAttribute="trailing" id="qbe-sc-84g"/>
+                            <constraint firstItem="FR1-1g-FRN" firstAttribute="top" secondItem="GDK-Na-mK2" secondAttribute="bottom" constant="20" id="sBv-ap-Ij5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GDK-Na-mK2" secondAttribute="trailing" id="tLz-4Z-83j"/>
-                            <constraint firstItem="GDK-Na-mK2" firstAttribute="top" secondItem="ELi-7A-ROu" secondAttribute="bottom" constant="139" id="tYF-Wr-iI5"/>
+                            <constraint firstItem="GDK-Na-mK2" firstAttribute="top" secondItem="ELi-7A-ROu" secondAttribute="bottom" constant="465" id="tYF-Wr-iI5"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4hU-OV-5yH"/>
+                                <exclude reference="NVu-cU-7is"/>
+                                <exclude reference="eUk-2f-W2U"/>
+                                <exclude reference="Adf-Of-Dle"/>
+                                <exclude reference="TaU-gG-iJA"/>
+                                <exclude reference="qbe-sc-84g"/>
+                                <exclude reference="tLz-4Z-83j"/>
+                                <exclude reference="tYF-Wr-iI5"/>
+                                <exclude reference="sBv-ap-Ij5"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="backdropImageView" destination="1H7-Xl-P3Y" id="euj-jL-TQb"/>
@@ -125,7 +161,7 @@
         <!--Navigation Controller-->
         <scene sceneID="xO5-P8-uym">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7IY-Pr-s89" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7IY-Pr-s89" customClass="NavigationController" customModule="NavChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="44z-c7-Ohv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -141,4 +177,7 @@
             <point key="canvasLocation" x="282" y="369"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="DefaultMovieBackground" width="505" height="750"/>
+    </resources>
 </document>

@@ -8,7 +8,6 @@
 
 import UIKit
 class DetailViewController: ViewController {
-    var movieId: Int?
     var movie: Movie?
     var backgroundGradientsApplied: Bool = false
     
@@ -18,21 +17,19 @@ class DetailViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureView()
         loadMovie()
+        
     }
     
     func configureView() {
-        if let backdropImagePath = movie?.backdrop_path {
-            setBackgroundImageWithUrl(backdropImagePath)
-        } else if let posterPath = movie?.poster_path {
+        if let posterPath = movie?.poster_path {
             setBackgroundImageWithUrl(posterPath)
+        } else if let backdropImagePath = movie?.backdrop_path {
+            setBackgroundImageWithUrl(backdropImagePath)
         }
         self.applyBackgroundGradient()
         
-        
-        /*
-        
-        */
         
         movieTitleLabel.text = ""
         if let movieTitle = movie?.title {
@@ -55,7 +52,7 @@ class DetailViewController: ViewController {
         
         
         let topLayer = CAGradientLayer()
-        topLayer.frame = CGRect(x: 0, y: 0, width: w, height: 65)
+        topLayer.frame = CGRect(x: 0, y: 0, width: w, height: 100)
         
         topLayer.colors = [blackColor.CGColor, clearColor.CGColor]
         
@@ -65,11 +62,13 @@ class DetailViewController: ViewController {
         
         //let clearColor = UIColor.redColor()
         layer.colors = [clearColor.CGColor, blackColor.CGColor]
-        layer.startPoint = CGPointMake(0, 0.2);
+        layer.startPoint = CGPointMake(0, 0.0);
         layer.endPoint = CGPointMake(0, 1);
 
-        backdropImageView?.layer.addSublayer(layer)
+        //backdropImageView?.layer.addSublayer(layer)
         backdropImageView?.layer.addSublayer(topLayer)
+        
+        
         
         backgroundGradientsApplied = true
     }
@@ -80,8 +79,9 @@ class DetailViewController: ViewController {
         
         NSData.getFromCachedFileOrUrl(imageUrl!, completion: { (imageData) in
             let downloadedImage                 = UIImage(data: imageData)
+            let blurredDownloadedImage          = downloadedImage?.applyDarkEffect()
             
-            self.backdropImageView.image        = downloadedImage
+            self.backdropImageView.image        = blurredDownloadedImage
             self.backdropImageView.contentMode  = .ScaleAspectFill
             self.backdropImageView.setNeedsLayout()
             self.backdropImageView.setNeedsDisplay()
@@ -90,7 +90,7 @@ class DetailViewController: ViewController {
     
     func loadMovie() {
         self.httpManager().GET(
-            Movie.loadMovieUrl(movieId!),
+            Movie.loadMovieUrl(movie!.id),
             parameters: loadMovieParameters(),
             success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject) in
                 
