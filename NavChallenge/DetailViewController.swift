@@ -12,17 +12,14 @@ class DetailViewController: ViewController {
     var movieTrailer: MovieTrailer?
     var backgroundGradientsApplied: Bool = false
     
-    @IBOutlet weak var movieTitleLabel: UILabel!
-    @IBOutlet weak var backdropImageView: UIImageView!
-    @IBOutlet weak var overviewLabel: UILabel!
-    @IBOutlet weak var bannerImageView: UIImageView!
+    @IBOutlet weak var movieTitleLabel, overviewLabel: UILabel!
+    @IBOutlet weak var backdropImageView, bannerImageView: UIImageView!
     @IBOutlet weak var playTrailerButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
         loadMovie()
-        
     }
     
     func configureView() {
@@ -32,16 +29,12 @@ class DetailViewController: ViewController {
         
         
         var frame = bannerImageView.frame
-        
         if let backdropImagePath = movie?.backdrop_path {
             setBannerImageWithUrl(backdropImagePath)
         } else {
-            frame.size.height = 0.00001
+            frame.size.height = 0.0
         }
         bannerImageView.frame = frame
-        
-        
-        self.applyBackgroundGradient()
         
         
         movieTitleLabel.text = ""
@@ -53,6 +46,7 @@ class DetailViewController: ViewController {
         overviewLabel.text = ""
         frame = overviewLabel.frame
         if let overview = movie?.overview {
+            // set the overview label frame dynamically
             let size            = rectForText(overview, font: overviewLabel.font, maxSize: CGSizeMake(overviewLabel.frame.width, 500))
             frame.size          = size
             overviewLabel.text  = overview
@@ -62,9 +56,9 @@ class DetailViewController: ViewController {
         }
         overviewLabel.frame = frame
         
+        
         playTrailerButton.addShadow()
-        
-        
+        self.applyBackgroundGradient()
     }
     
     func rectForText(text: String, font: UIFont, maxSize: CGSize) -> CGSize {
@@ -75,31 +69,21 @@ class DetailViewController: ViewController {
     }
     
     func applyBackgroundGradient() {
+        // add some contrast to the movie title label where the navigation title usually goes
         if backgroundGradientsApplied == true {
             return
         }
         
         let blackColor  = UIColor(white: 0, alpha: 1)
         let clearColor  = UIColor.clearColor()
-        let w           = UIScreen.mainScreen().bounds.size.width + 5
-        let h           = backdropImageView.frame.height
-    
+        let w           = UIScreen.mainScreen().bounds.size.width + 5 // +5  is to ensure this extends past the scroll bar
+        
         
         
         let topLayer        = CAGradientLayer()
         topLayer.frame      = CGRect(x: 0, y: 0, width: w, height: 100)
-        
         topLayer.colors     = [blackColor.CGColor, clearColor.CGColor]
         
-        
-        let layer           = CAGradientLayer()
-        layer.frame         = CGRect(x: 0, y: 0, width: w, height: h)
-        
-        layer.colors        = [clearColor.CGColor, blackColor.CGColor]
-        layer.startPoint    = CGPointMake(0, 0.0);
-        layer.endPoint      = CGPointMake(0, 1);
-
-        //backdropImageView?.layer.addSublayer(layer)
         backdropImageView?.layer.addSublayer(topLayer)
         
         
@@ -113,11 +97,12 @@ class DetailViewController: ViewController {
         
         NSData.getFromCachedFileOrUrl(imageUrl!, completion: { (imageData) in
             
-            let downloadedImage                 = UIImage(data: imageData)
-            let blurredDownloadedImage          = downloadedImage?.applyDarkEffect()
-            self.backdropImageView.contentMode  = .ScaleAspectFill
+            let downloadedImage                     = UIImage(data: imageData)
+            let blurredDownloadedImage              = downloadedImage?.applyDarkEffect()
+            self.backdropImageView.contentMode      = .ScaleAspectFill
+            
             UIView.animateWithDuration(0.5, animations: {
-                self.backdropImageView.image        = blurredDownloadedImage
+                self.backdropImageView.image = blurredDownloadedImage
                 
                 if self.movieTrailer != nil {
                     self.playTrailerButton.alpha = 1.0
@@ -164,7 +149,6 @@ class DetailViewController: ViewController {
             parameters: loadMovieParameters(),
             success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject) in
                 
-                
                 do {
                     let json    = try NSJSONSerialization.JSONObjectWithData(operation.responseData!, options: .AllowFragments)
                     self.movie  = Movie.init(json as! Dictionary<String, AnyObject>)
@@ -173,8 +157,6 @@ class DetailViewController: ViewController {
                 }
                 self.configureView()
                 self.checkForTrailers()
-                
-                
                 
             }, failure: { (operation: AFHTTPRequestOperation?, error: NSError) in
                 self.handleHttpFailure(operation!, error: error)
@@ -190,22 +172,24 @@ class DetailViewController: ViewController {
             parameters: loadMovieParameters(),
             success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject) in
                 
-                
                 do {
                     let json = try NSJSONSerialization.JSONObjectWithData(operation.responseData!, options: .AllowFragments)
                     if let trailers = json.objectForKey("results") as? NSArray {
                         for trailerData in trailers {
                             let trailer = MovieTrailer.init(trailerData as! Dictionary<String, AnyObject>)
-                            self.movieTrailer = trailer
+                            if self.movieTrailer == nil {
+                                self.movieTrailer = trailer
+                            }
+                            
                             if let trailerName = trailer.name {
                                 if trailerName == "Official Trailer" {
+                                    // if the official trailer is found, play that one
+                                    self.movieTrailer = trailer
                                     break
                                 }
                             }
-                            
                         }
                     }
-                    
                 } catch {
                     //print("Error \(error)")
                 }
@@ -235,9 +219,6 @@ class DetailViewController: ViewController {
             return
         }
     }
-    
-    
-    
     
     
 }

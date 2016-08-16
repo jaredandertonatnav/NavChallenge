@@ -17,7 +17,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
         
-        self.layer.cornerRadius = 6
+        self.layer.cornerRadius                 = 6
         self.backgroundImageView?.clipsToBounds = true
         
         

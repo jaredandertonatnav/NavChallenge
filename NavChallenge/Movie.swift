@@ -15,15 +15,15 @@ class Movie {
     convenience init(_ dictionary: Dictionary<String, AnyObject>) {
         self.init()
         
-        id              = dictionary["id"] as! Int
+        id              = dictionary["id"]              as! Int
         
-        popularity      = dictionary["popularity"] as? Double
+        popularity      = dictionary["popularity"]      as? Double
     
-        title           = dictionary["title"] as? String
-        backdrop_path   = dictionary["backdrop_path"] as? String
-        tagline         = dictionary["tagline"] as? String
-        poster_path     = dictionary["poster_path"] as? String
-        overview        = dictionary["overview"] as? String
+        title           = dictionary["title"]           as? String
+        backdrop_path   = dictionary["backdrop_path"]   as? String
+        tagline         = dictionary["tagline"]         as? String
+        poster_path     = dictionary["poster_path"]     as? String
+        overview        = dictionary["overview"]        as? String
     
     }
     

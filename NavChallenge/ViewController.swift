@@ -21,14 +21,10 @@ class ViewController: UIViewController {
     }
     
     func defaultBackButton() {
-        let backItem = UIBarButtonItem()
-        backItem.title = ""
-        navigationItem.backBarButtonItem = backItem
+        let backItem                        = UIBarButtonItem()
+        backItem.title                      = ""
+        navigationItem.backBarButtonItem    = backItem
     }
-    
-    
-
-
     
 
 
@@ -36,13 +32,13 @@ class ViewController: UIViewController {
         edgeInsets = self.tableView?.contentInset
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: "keyboardWillShow:",
+            selector: #selector(ViewController.keyboardWillShow(_:)),
             name: UIKeyboardWillShowNotification,
             object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: "keyboardWillHide:",
+            selector: #selector(ViewController.keyboardWillHide(_:)),
             name: UIKeyboardWillHideNotification,
             object: nil)
     }

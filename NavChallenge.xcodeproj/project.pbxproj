@@ -137,7 +137,6 @@
 				67038ECA1D6242B8007CC8CD /* UIFont+SytemFontOverride.m */,
 				67038ED61D62C90B007CC8CD /* UIDevice+NavChallenge.swift */,
 				67038EB71D5EE4C6007CC8CD /* bridge.h */,
-				67038EDE1D62E7A7007CC8CD /* 3rd Party */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -186,13 +185,6 @@
 				67038EC11D617BCA007CC8CD /* DetailViewController.swift */,
 			);
 			name = Detail;
-			sourceTree = "<group>";
-		};
-		67038EDE1D62E7A7007CC8CD /* 3rd Party */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "3rd Party";
 			sourceTree = "<group>";
 		};
 		67038EE21D62E8B3007CC8CD /* Play Trailer */ = {

@@ -16,10 +16,10 @@ class MovieTrailer {
         self.init()
         
     
-        id      = dictionary["id"] as? String
-        key     = dictionary["key"] as? String
-        name    = dictionary["name"] as? String
-        site    = dictionary["site"] as? String
+        id      = dictionary["id"]      as? String
+        key     = dictionary["key"]     as? String
+        name    = dictionary["name"]    as? String
+        site    = dictionary["site"]    as? String
     
     }
     

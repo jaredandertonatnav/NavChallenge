@@ -16,8 +16,7 @@ class SearchViewController: ViewController, UISearchBarDelegate, UICollectionVie
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var noResultsView: UIView!
-    @IBOutlet weak var noResultsLabel: UILabel!
-    @IBOutlet weak var startYouSearchLabel: UILabel!
+    @IBOutlet weak var noResultsLabel, startYouSearchLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +71,6 @@ class SearchViewController: ViewController, UISearchBarDelegate, UICollectionVie
     
     func resetResults() {
         results.removeAll()
-        //tableView.reloadData()
         resultsLoadPage     = 0
         resultsPageCount    = 0
     }
@@ -96,7 +94,9 @@ class SearchViewController: ViewController, UISearchBarDelegate, UICollectionVie
                         }
                     }
                     if let pageNum = json.objectForKey("page") as? Int {
-                        // the api is the source of truth, so overwrite the page counter variable
+                        // even though we are tracking the page count, 
+                        // the api is the source of truth, 
+                        // so overwrite the page counter variable on each successful response
                         self.resultsLoadPage = pageNum;
                     }
                     if let pageNumCount = json.objectForKey("total_pages") as? Int {
@@ -123,8 +123,6 @@ class SearchViewController: ViewController, UISearchBarDelegate, UICollectionVie
                 self.collectionView.alpha   = 0.0
                 self.noResultsView.alpha    = 1.0
             }
-            
-            
             
             if query.characters.count == 0 {
                 self.noResultsLabel.alpha       = 0.0
@@ -156,8 +154,8 @@ class SearchViewController: ViewController, UISearchBarDelegate, UICollectionVie
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SearchResultsCollectionCell", forIndexPath: indexPath) as! SearchCollectionViewCell
         
-        let movie = results[indexPath.item]
-        cell.movie = movie
+        let movie   = results[indexPath.item]
+        cell.movie  = movie
         if let title = movie.title {
             cell.movieTitleLabel.text = title
             cell.movieTitleLabel.addShadow()
@@ -182,6 +180,8 @@ class SearchViewController: ViewController, UISearchBarDelegate, UICollectionVie
     
     
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        // only load the next page, if we are about to display the last result we have AND
+        // we haven't already reached the number of results limit 
         if indexPath.item == results.count - 1 && resultsLoadPage < resultsPageCount {
             loadNextPage()
         }
@@ -191,31 +191,18 @@ class SearchViewController: ViewController, UISearchBarDelegate, UICollectionVie
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
     
         // dynamically size the cells, for consistent size and spacing across different devices
-        
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
-        let spacing = Float(8.0)
-        var mult = Float(1.5)
-        if(UIDevice.isSixPlus()) {
-            // hack for 6 plus
-            mult = Float(2.5)
-        }
-        
-        let positiveSpace = Float(screenSize.size.width) - (spacing * mult)
-        let w = positiveSpace / 2.0
-        let h = w
+        let screenSize: CGRect  = UIScreen.mainScreen().bounds
+        let spacing             = Float(8.0)
+        var mult                = Float(2.5)
+        let positiveSpace       = Float(screenSize.size.width) - (spacing * mult)
+        let w                   = positiveSpace / 2.0
+        let h                   = w
         
         return CGSizeMake(CGFloat(w), CGFloat(h))
     }
-
     
     
-
-    
-    
-    
-    
-    
-    
+                
     
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
@@ -255,13 +242,13 @@ class SearchViewController: ViewController, UISearchBarDelegate, UICollectionVie
         edgeInsets = self.collectionView?.contentInset
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: "keyboardWillShow:",
+            selector: #selector(ViewController.keyboardWillShow(_:)),
             name: UIKeyboardWillShowNotification,
             object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: "keyboardWillHide:",
+            selector: #selector(ViewController.keyboardWillHide(_:)),
             name: UIKeyboardWillHideNotification,
             object: nil)
     }
