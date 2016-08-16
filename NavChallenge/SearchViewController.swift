@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class SearchViewController: ViewController, UISearchBarDelegate, /*UITableViewDelegate, UITableViewDataSource,*/ UICollectionViewDelegate, UICollectionViewDataSource {
+class SearchViewController: ViewController, UISearchBarDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var results:[Movie] = []
     var resultsLoadPage: Int = 0
@@ -26,13 +26,15 @@ class SearchViewController: ViewController, UISearchBarDelegate, /*UITableViewDe
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        //self.prepareTableViewForKeyboard()
+        prepareCollectionViewForKeyboard()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = true
     }
+    
+    
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
@@ -140,46 +142,6 @@ class SearchViewController: ViewController, UISearchBarDelegate, /*UITableViewDe
         }
     }
     
-    /*
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SearchResultsCell")
-        let movie = results[indexPath.item]
-        if let title = movie.title {
-            cell?.textLabel?.text = title
-        }
-        
-        if let posterPath = movie.poster_path {
-            let imageUrl = movie.fullImagePath(posterPath, width: 185)
-        
-            NSData.getFromCachedFileOrUrl(imageUrl, completion: { (imageData) in
-                let downloadedImage             = UIImage(data: imageData)
-                cell?.imageView?.contentMode    = .ScaleAspectFill
-                cell?.imageView?.image          = downloadedImage
-                cell?.imageView!.setNeedsLayout()
-                cell?.imageView!.setNeedsDisplay()
-            })
-        }
-        return cell!
-    }
-    
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.item == results.count - 1 && resultsLoadPage < resultsPageCount {
-            loadNextPage()
-        }
-    }*/
-    
-    
-    
-    
-    
     
     
     
@@ -201,15 +163,7 @@ class SearchViewController: ViewController, UISearchBarDelegate, /*UITableViewDe
             cell.movieTitleLabel.addShadow()
         }
         
-        /*let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.init(rawValue: 1)!)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = view.bounds
-        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight] // for supporting device rotation
-        cell.titleView.insertSubview(blurEffectView, atIndex: 0)*/
-        
-        
         cell.backgroundImageView.image = UIImage(named: "MoviePlaceHolder")
-        //if let imagePath = movie.backdrop_path {
         if let imagePath = movie.poster_path {
             let imageUrl = movie.fullImagePath(imagePath, width: 185)
         
@@ -293,17 +247,50 @@ class SearchViewController: ViewController, UISearchBarDelegate, /*UITableViewDe
         searchBar.setShowsCancelButton(false, animated: true)
     }
     
+    
+    
+    
+    
+    func prepareCollectionViewForKeyboard() {
+        edgeInsets = self.collectionView?.contentInset
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: "keyboardWillShow:",
+            name: UIKeyboardWillShowNotification,
+            object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: "keyboardWillHide:",
+            name: UIKeyboardWillHideNotification,
+            object: nil)
+    }
+    
+    @objc override func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            let contentInsets = UIEdgeInsets(top: edgeInsets!.top, left: 0, bottom: keyboardSize.height, right: 0)
+            self.collectionView?.contentInset = contentInsets
+            self.collectionView?.scrollIndicatorInsets = contentInsets
+        }
+    }
+    
+    @objc override func keyboardWillHide(notification: NSNotification){
+        self.collectionView?.contentInset = edgeInsets!
+        self.collectionView?.scrollIndicatorInsets = UIEdgeInsetsZero
+    }
+    
+    
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "loadMovieSegue" {
-        
-            //let indexPath   = self.tableView.indexPathForCell(sender as! UITableViewCell)
             
             let indexPath   = self.collectionView.indexPathForCell(sender as! SearchCollectionViewCell)
             let movie       = results[(indexPath?.item)!]
             let vc          = segue.destinationViewController as! DetailViewController
             vc.movie        = movie
             
-            // stop the search bar from being the first responder, 
+            // stop the search bar from being the first responder,
             // so when navigating back, the scroll point doesn't change
             self.view.endEditing(true)
             

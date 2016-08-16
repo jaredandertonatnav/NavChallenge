@@ -47,27 +47,21 @@ class ViewController: UIViewController {
             object: nil)
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
-    
-    
-    
-    @objc func keyboardWillShow(notification: NSNotification){
-        
-        
+    @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
             let contentInsets = UIEdgeInsets(top: edgeInsets!.top, left: 0, bottom: keyboardSize.height, right: 0)
             self.tableView?.contentInset = contentInsets
             self.tableView?.scrollIndicatorInsets = contentInsets
-
         }
-        
     }
     
     @objc func keyboardWillHide(notification: NSNotification){
         self.tableView?.contentInset = edgeInsets!
         self.tableView?.scrollIndicatorInsets = UIEdgeInsetsZero
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
     
