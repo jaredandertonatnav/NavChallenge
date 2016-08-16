@@ -74,24 +74,17 @@ extension UIViewController {
             message: "The server took too long to respond. Please try again later.",
             preferredStyle: .Alert)
         
-        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-        }
+        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
         alertController.addAction(OKAction)
-        self.presentViewController(alertController, animated: true) {
-            // ...
-        }
+        self.presentViewController(alertController, animated: true) {}
     }
     
     func handleHttpFailureCodeUnspecified(operation: AFHTTPRequestOperation) {
         // unspecified error
         let alertController = AlertController(title: "This is embarrassing...", message: "There was an error we didn't handle. Please try again or contact us for support.", preferredStyle: .Alert)
-        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-            //
-        }
+        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
         alertController.addAction(OKAction)
-        self.presentViewController(alertController, animated: true) {
-            // ...
-        }
+        self.presentViewController(alertController, animated: true) {}
     }
     
     func handleHttpRequestUnKnownFailure(operation: AFHTTPRequestOperation) {
@@ -101,12 +94,9 @@ extension UIViewController {
             message: "The was an error communicating with the server. Please try again later of contact us for support.",
             preferredStyle: .Alert)
         
-        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-        }
+        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
         alertController.addAction(OKAction)
-        self.presentViewController(alertController, animated: true) {
-            // ...
-        }
+        self.presentViewController(alertController, animated: true) {}
     }
 
 }

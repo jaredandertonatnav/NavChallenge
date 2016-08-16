@@ -9,15 +9,22 @@
 import UIKit
 class NavigationController:UINavigationController {
     override func viewDidLoad() {
-        self.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        makeBarTransparent()
+    
         
-        self.navigationBar.barTintColor = UIColor.whiteColor()
-        self.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        
-        UINavigationBar.appearance().shadowImage = UIImage()
 
         
+    }
+    
+    func makeBarTransparent() {
+        self.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        
+        self.navigationBar.barTintColor             = UIColor.whiteColor()
+        self.navigationBar.tintColor                = UIColor.whiteColor()
+        self.navigationBar.titleTextAttributes      = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
+        // removing shadow
+        UINavigationBar.appearance().shadowImage    = UIImage()
     }
     
 }

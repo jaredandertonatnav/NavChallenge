@@ -21,12 +21,10 @@ class ViewController: UIViewController {
     }
     
     func defaultBackButton() {
-        let backItem = UIBarButtonItem()
-        backItem.title = ""
-        navigationItem.backBarButtonItem = backItem
+        let backItem                        = UIBarButtonItem()
+        backItem.title                      = ""
+        navigationItem.backBarButtonItem    = backItem
     }
-
-
     
 
 
@@ -34,34 +32,32 @@ class ViewController: UIViewController {
         edgeInsets = self.tableView?.contentInset
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: "keyboardWillShow:",
+            selector: #selector(ViewController.keyboardWillShow(_:)),
             name: UIKeyboardWillShowNotification,
             object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: "keyboardWillHide:",
+            selector: #selector(ViewController.keyboardWillHide(_:)),
             name: UIKeyboardWillHideNotification,
             object: nil)
     }
     
-    
-    
-    @objc func keyboardWillShow(notification: NSNotification){
-        
-        
+    @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
             let contentInsets = UIEdgeInsets(top: edgeInsets!.top, left: 0, bottom: keyboardSize.height, right: 0)
             self.tableView?.contentInset = contentInsets
             self.tableView?.scrollIndicatorInsets = contentInsets
-
         }
-        
     }
     
     @objc func keyboardWillHide(notification: NSNotification){
         self.tableView?.contentInset = edgeInsets!
         self.tableView?.scrollIndicatorInsets = UIEdgeInsetsZero
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
     

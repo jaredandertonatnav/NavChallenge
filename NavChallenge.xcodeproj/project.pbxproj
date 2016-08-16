@@ -16,7 +16,7 @@
 		67038EB11D5EE101007CC8CD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038EB01D5EE101007CC8CD /* Constants.swift */; };
 		67038EB31D5EE266007CC8CD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038EB21D5EE266007CC8CD /* SearchViewController.swift */; };
 		67038EB61D5EE2FF007CC8CD /* UIViewController+NavChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038EB51D5EE2FF007CC8CD /* UIViewController+NavChallenge.swift */; };
-		67038EBD1D5EF0B9007CC8CD /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038EBC1D5EF0B9007CC8CD /* MovieModel.swift */; };
+		67038EBD1D5EF0B9007CC8CD /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038EBC1D5EF0B9007CC8CD /* Movie.swift */; };
 		67038EBF1D601ABE007CC8CD /* NSData+NavChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038EBE1D601ABE007CC8CD /* NSData+NavChallenge.swift */; };
 		67038EC21D617BCA007CC8CD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038EC11D617BCA007CC8CD /* DetailViewController.swift */; };
 		67038EC51D61830F007CC8CD /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038EC41D61830F007CC8CD /* AlertController.swift */; };
@@ -24,6 +24,10 @@
 		67038ECB1D6242B8007CC8CD /* UIFont+SytemFontOverride.m in Sources */ = {isa = PBXBuildFile; fileRef = 67038ECA1D6242B8007CC8CD /* UIFont+SytemFontOverride.m */; };
 		67038ECD1D62AF81007CC8CD /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038ECC1D62AF81007CC8CD /* NavigationController.swift */; };
 		67038ED01D62B303007CC8CD /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 67038ECF1D62B303007CC8CD /* UIImage+ImageEffects.m */; };
+		67038ED51D62C840007CC8CD /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038ED41D62C840007CC8CD /* SearchCollectionViewCell.swift */; };
+		67038ED71D62C90B007CC8CD /* UIDevice+NavChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038ED61D62C90B007CC8CD /* UIDevice+NavChallenge.swift */; };
+		67038ED91D62E0C8007CC8CD /* MovieTrailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038ED81D62E0C8007CC8CD /* MovieTrailer.swift */; };
+		67038EE41D62E918007CC8CD /* PlayTrailerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038EE31D62E918007CC8CD /* PlayTrailerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +43,7 @@
 		67038EB21D5EE266007CC8CD /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		67038EB51D5EE2FF007CC8CD /* UIViewController+NavChallenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavChallenge.swift"; sourceTree = "<group>"; };
 		67038EB71D5EE4C6007CC8CD /* bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
-		67038EBC1D5EF0B9007CC8CD /* MovieModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		67038EBC1D5EF0B9007CC8CD /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		67038EBE1D601ABE007CC8CD /* NSData+NavChallenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSData+NavChallenge.swift"; sourceTree = "<group>"; };
 		67038EC11D617BCA007CC8CD /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		67038EC41D61830F007CC8CD /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
@@ -49,6 +53,10 @@
 		67038ECC1D62AF81007CC8CD /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		67038ECE1D62B303007CC8CD /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		67038ECF1D62B303007CC8CD /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		67038ED41D62C840007CC8CD /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		67038ED61D62C90B007CC8CD /* UIDevice+NavChallenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+NavChallenge.swift"; sourceTree = "<group>"; };
+		67038ED81D62E0C8007CC8CD /* MovieTrailer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTrailer.swift; sourceTree = "<group>"; };
+		67038EE31D62E918007CC8CD /* PlayTrailerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayTrailerViewController.swift; sourceTree = "<group>"; };
 		7628A65A0BD0CC3A546D2437 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F53C882EF0323371D9697532 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,6 +111,7 @@
 		67038E9D1D5EDF57007CC8CD /* NavChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				67038ED11D62C810007CC8CD /* Sections */,
 				67038EC31D6182BB007CC8CD /* View Controllers */,
 				67038EA21D5EDF58007CC8CD /* Main.storyboard */,
 				67038EB01D5EE101007CC8CD /* Constants.swift */,
@@ -112,7 +121,6 @@
 				67038EAA1D5EDF58007CC8CD /* Info.plist */,
 				67038EB91D5EF098007CC8CD /* Classes */,
 				67038EB41D5EE2B6007CC8CD /* Extensions */,
-				67038EB71D5EE4C6007CC8CD /* bridge.h */,
 			);
 			path = NavChallenge;
 			sourceTree = "<group>";
@@ -127,6 +135,8 @@
 				67038EBE1D601ABE007CC8CD /* NSData+NavChallenge.swift */,
 				67038EC91D6242B8007CC8CD /* UIFont+SytemFontOverride.h */,
 				67038ECA1D6242B8007CC8CD /* UIFont+SytemFontOverride.m */,
+				67038ED61D62C90B007CC8CD /* UIDevice+NavChallenge.swift */,
+				67038EB71D5EE4C6007CC8CD /* bridge.h */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -134,7 +144,8 @@
 		67038EB91D5EF098007CC8CD /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				67038EBC1D5EF0B9007CC8CD /* MovieModel.swift */,
+				67038EBC1D5EF0B9007CC8CD /* Movie.swift */,
+				67038ED81D62E0C8007CC8CD /* MovieTrailer.swift */,
 				67038ECC1D62AF81007CC8CD /* NavigationController.swift */,
 			);
 			name = Classes;
@@ -143,12 +154,45 @@
 		67038EC31D6182BB007CC8CD /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				67038EB21D5EE266007CC8CD /* SearchViewController.swift */,
-				67038EC11D617BCA007CC8CD /* DetailViewController.swift */,
 				67038EA01D5EDF57007CC8CD /* ViewController.swift */,
 				67038EC41D61830F007CC8CD /* AlertController.swift */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		67038ED11D62C810007CC8CD /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				67038EE21D62E8B3007CC8CD /* Play Trailer */,
+				67038ED31D62C823007CC8CD /* Detail */,
+				67038ED21D62C81E007CC8CD /* Search */,
+			);
+			name = Sections;
+			sourceTree = "<group>";
+		};
+		67038ED21D62C81E007CC8CD /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				67038EB21D5EE266007CC8CD /* SearchViewController.swift */,
+				67038ED41D62C840007CC8CD /* SearchCollectionViewCell.swift */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		67038ED31D62C823007CC8CD /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				67038EC11D617BCA007CC8CD /* DetailViewController.swift */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		67038EE21D62E8B3007CC8CD /* Play Trailer */ = {
+			isa = PBXGroup;
+			children = (
+				67038EE31D62E918007CC8CD /* PlayTrailerViewController.swift */,
+			);
+			name = "Play Trailer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,8 +317,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67038EBD1D5EF0B9007CC8CD /* MovieModel.swift in Sources */,
+				67038ED91D62E0C8007CC8CD /* MovieTrailer.swift in Sources */,
+				67038EBD1D5EF0B9007CC8CD /* Movie.swift in Sources */,
 				67038ED01D62B303007CC8CD /* UIImage+ImageEffects.m in Sources */,
+				67038ED71D62C90B007CC8CD /* UIDevice+NavChallenge.swift in Sources */,
 				67038ECD1D62AF81007CC8CD /* NavigationController.swift in Sources */,
 				67038EC51D61830F007CC8CD /* AlertController.swift in Sources */,
 				67038EA11D5EDF57007CC8CD /* ViewController.swift in Sources */,
@@ -285,6 +331,8 @@
 				67038ECB1D6242B8007CC8CD /* UIFont+SytemFontOverride.m in Sources */,
 				67038EB11D5EE101007CC8CD /* Constants.swift in Sources */,
 				67038EBF1D601ABE007CC8CD /* NSData+NavChallenge.swift in Sources */,
+				67038ED51D62C840007CC8CD /* SearchCollectionViewCell.swift in Sources */,
+				67038EE41D62E918007CC8CD /* PlayTrailerViewController.swift in Sources */,
 				67038EC21D617BCA007CC8CD /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
