@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3025AC26E86FD6E54FA84989'
-               BlueprintName = 'AFNetworking'
+               BlueprintIdentifier = '89AFF9199FA7D4F032B3CAAA'
+               BlueprintName = 'youtube-ios-player-helper'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libAFNetworking.a'>
+               BuildableName = 'libyoutube-ios-player-helper.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

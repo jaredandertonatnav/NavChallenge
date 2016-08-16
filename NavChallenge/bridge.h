@@ -12,6 +12,7 @@
 #import "AFNetworking.h"
 #import "UIFont+SytemFontOverride.h"
 #import "UIImage+ImageEffects.h"
+#import "YTPlayerView.h"
 
 
 #endif /* bridge_h */

@@ -62,13 +62,8 @@ class DetailViewController: ViewController {
         }
         overviewLabel.frame = frame
         
+        playTrailerButton.addShadow()
         
-        if movieTrailer != nil {
-            playTrailerButton.hidden = false
-            playTrailerButton.addShadow()
-        } else {
-            playTrailerButton.hidden = true
-        }
         
     }
     
@@ -117,13 +112,25 @@ class DetailViewController: ViewController {
 
         
         NSData.getFromCachedFileOrUrl(imageUrl!, completion: { (imageData) in
+            
             let downloadedImage                 = UIImage(data: imageData)
             let blurredDownloadedImage          = downloadedImage?.applyDarkEffect()
-            
-            self.backdropImageView.image        = blurredDownloadedImage
             self.backdropImageView.contentMode  = .ScaleAspectFill
-            self.backdropImageView.setNeedsLayout()
-            self.backdropImageView.setNeedsDisplay()
+            UIView.animateWithDuration(0.5, animations: {
+                self.backdropImageView.image        = blurredDownloadedImage
+                
+                if self.movieTrailer != nil {
+                    self.playTrailerButton.alpha = 1.0
+                } else {
+                    self.playTrailerButton.alpha = 0.0
+                }
+            })
+            
+            
+            
+            
+            
+            
         })
     }
     
@@ -133,12 +140,15 @@ class DetailViewController: ViewController {
         
         NSData.getFromCachedFileOrUrl(imageUrl!, completion: { (imageData) in
             let downloadedImage                 = UIImage(data: imageData)
+            self.bannerImageView.contentMode    = .ScaleAspectFill
             
             
-            self.bannerImageView.image        = downloadedImage
-            self.bannerImageView.contentMode  = .ScaleAspectFill
-            self.bannerImageView.setNeedsLayout()
-            self.bannerImageView.setNeedsDisplay()
+            
+            
+            UIView.animateWithDuration(0.5, animations: {
+                self.bannerImageView.image      = downloadedImage
+                self.bannerImageView.alpha      = 1.0
+            })
         })
     }
 
@@ -205,10 +215,29 @@ class DetailViewController: ViewController {
                 self.handleHttpFailure(operation!, error: error)
             }
         )
-
     }
     
-    // let imageUrl = movie.fullImagePath(posterPath, 185)
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if identifier == "playTrailerSegue" {
+            if movieTrailer == nil {
+                return false
+            }
+        }
+        return true
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "playTrailerSegue" {
+            let vc          = segue.destinationViewController as! PlayTrailerViewController
+            if let trailer = self.movieTrailer {
+                vc.movieTrailer = trailer
+            }
+            return
+        }
+    }
+    
+    
+    
     
     
 }

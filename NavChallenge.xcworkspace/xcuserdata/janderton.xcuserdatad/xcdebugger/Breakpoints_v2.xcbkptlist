@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NavChallenge/SearchViewController.swift"
-            timestampString = "493014253.258107"
+            timestampString = "493024584.654912"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NavChallenge/SearchViewController.swift"
-            timestampString = "493015209.417405"
+            timestampString = "493025315.909221"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "SearchViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -48,6 +48,86 @@
             startingLineNumber = "29"
             endingLineNumber = "29"
             landmarkName = "configureView()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NavChallenge/PlayTrailerViewController.swift"
+            timestampString = "493022365.191973"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NavChallenge.PlayTrailerViewController.viewDidLoad () -&gt; ()"
+                  moduleName = "NavChallenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/janderton/Documents/iOSTestApps/NavChallenge/NavChallenge/PlayTrailerViewController.swift"
+                  timestampString = "493022365.205196"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "57">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NavChallenge.PlayTrailerViewController.viewDidLoad () -&gt; ()"
+                  moduleName = "NavChallenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/janderton/Documents/iOSTestApps/NavChallenge/NavChallenge/PlayTrailerViewController.swift"
+                  timestampString = "493022365.205327"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "93">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NavChallenge/PlayTrailerViewController.swift"
+            timestampString = "493022947.893979"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NavChallenge/YTPlayerView.m"
+            timestampString = "493022529.043968"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "724"
+            endingLineNumber = "724"
+            landmarkName = "-loadWithPlayerParams:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -12,12 +12,16 @@ class SearchViewController: ViewController, UISearchBarDelegate, /*UITableViewDe
     var results:[Movie] = []
     var resultsLoadPage: Int = 0
     var resultsPageCount: Int = 0
-    var query: NSString = ""
+    var query: String = ""
     
     @IBOutlet weak var collectionView: UICollectionView!
-
+    @IBOutlet weak var noResultsView: UIView!
+    @IBOutlet weak var noResultsLabel: UILabel!
+    @IBOutlet weak var startYouSearchLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureView()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -33,6 +37,24 @@ class SearchViewController: ViewController, UISearchBarDelegate, /*UITableViewDe
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBarHidden = false
+    }
+    
+    func configureView() {
+        handleCurrentResultCount()
+        noResultsLabel.addShadow()
+        startYouSearchLabel.addShadow()
+        removeSearchBackground()
+        searchBar.tintColor = UIColor.blackColor()
+    }
+    
+    func removeSearchBackground() {
+        for subView in searchBar.subviews {
+            for subViewInSubView in subView.subviews {
+                if subViewInSubView.isKindOfClass(UITextField) {
+                    subViewInSubView.backgroundColor = UIColor.clearColor()
+               }
+            }
+        }
     }
     
     
@@ -83,13 +105,39 @@ class SearchViewController: ViewController, UISearchBarDelegate, /*UITableViewDe
                 }
                 let tmpResults  = self.results
                 self.results    = tmpResults + tmpMovie
-                //self.tableView.reloadData()
-                self.collectionView.reloadData()
+                self.handleCurrentResultCount()
                 
             }, failure: { (operation: AFHTTPRequestOperation?, error: NSError) in
                 self.handleHttpFailure(operation!, error: error)
+                self.handleCurrentResultCount()
             }
         )
+    }
+    
+    func handleCurrentResultCount() {
+        collectionView.reloadData()
+        if results.count == 0 {
+            UIView.animateWithDuration(0.5) {
+                self.collectionView.alpha   = 0.0
+                self.noResultsView.alpha    = 1.0
+            }
+            
+            
+            
+            if query.characters.count == 0 {
+                self.noResultsLabel.alpha       = 0.0
+                self.startYouSearchLabel.alpha  = 1.0
+            } else {
+                self.noResultsLabel.alpha       = 1.0
+                self.startYouSearchLabel.alpha  = 0.0
+            }
+            
+        } else {
+            UIView.animateWithDuration(0.5) {                
+                self.collectionView.alpha   = 1.0
+                self.noResultsView.alpha    = 0.0
+            }
+        }
     }
     
     /*
@@ -178,7 +226,8 @@ class SearchViewController: ViewController, UISearchBarDelegate, /*UITableViewDe
     
     
     
-    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         if indexPath.item == results.count - 1 && resultsLoadPage < resultsPageCount {
             loadNextPage()
         }
@@ -216,17 +265,18 @@ class SearchViewController: ViewController, UISearchBarDelegate, /*UITableViewDe
     
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        self.httpManager().operationQueue.cancelAllOperations()
+        self.resetResults()
+        query = ""
         if let text = searchBar.text {
             if text.characters.count > 0 {
                 query = text
-                
-                self.httpManager().operationQueue.cancelAllOperations()
-                self.resetResults()
                 self.loadNextPage()
-            } else {
-                
+                // if loading the next page, the success will handle the current result count
+                return
             }
         }
+        handleCurrentResultCount()
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {

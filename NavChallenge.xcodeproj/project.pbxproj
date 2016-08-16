@@ -27,6 +27,7 @@
 		67038ED51D62C840007CC8CD /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038ED41D62C840007CC8CD /* SearchCollectionViewCell.swift */; };
 		67038ED71D62C90B007CC8CD /* UIDevice+NavChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038ED61D62C90B007CC8CD /* UIDevice+NavChallenge.swift */; };
 		67038ED91D62E0C8007CC8CD /* MovieTrailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038ED81D62E0C8007CC8CD /* MovieTrailer.swift */; };
+		67038EE41D62E918007CC8CD /* PlayTrailerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038EE31D62E918007CC8CD /* PlayTrailerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		67038ED41D62C840007CC8CD /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		67038ED61D62C90B007CC8CD /* UIDevice+NavChallenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+NavChallenge.swift"; sourceTree = "<group>"; };
 		67038ED81D62E0C8007CC8CD /* MovieTrailer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTrailer.swift; sourceTree = "<group>"; };
+		67038EE31D62E918007CC8CD /* PlayTrailerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayTrailerViewController.swift; sourceTree = "<group>"; };
 		7628A65A0BD0CC3A546D2437 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F53C882EF0323371D9697532 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,7 +121,6 @@
 				67038EAA1D5EDF58007CC8CD /* Info.plist */,
 				67038EB91D5EF098007CC8CD /* Classes */,
 				67038EB41D5EE2B6007CC8CD /* Extensions */,
-				67038EB71D5EE4C6007CC8CD /* bridge.h */,
 			);
 			path = NavChallenge;
 			sourceTree = "<group>";
@@ -135,6 +136,8 @@
 				67038EC91D6242B8007CC8CD /* UIFont+SytemFontOverride.h */,
 				67038ECA1D6242B8007CC8CD /* UIFont+SytemFontOverride.m */,
 				67038ED61D62C90B007CC8CD /* UIDevice+NavChallenge.swift */,
+				67038EB71D5EE4C6007CC8CD /* bridge.h */,
+				67038EDE1D62E7A7007CC8CD /* 3rd Party */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 		67038ED11D62C810007CC8CD /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				67038EE21D62E8B3007CC8CD /* Play Trailer */,
 				67038ED31D62C823007CC8CD /* Detail */,
 				67038ED21D62C81E007CC8CD /* Search */,
 			);
@@ -182,6 +186,21 @@
 				67038EC11D617BCA007CC8CD /* DetailViewController.swift */,
 			);
 			name = Detail;
+			sourceTree = "<group>";
+		};
+		67038EDE1D62E7A7007CC8CD /* 3rd Party */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "3rd Party";
+			sourceTree = "<group>";
+		};
+		67038EE21D62E8B3007CC8CD /* Play Trailer */ = {
+			isa = PBXGroup;
+			children = (
+				67038EE31D62E918007CC8CD /* PlayTrailerViewController.swift */,
+			);
+			name = "Play Trailer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,6 +340,7 @@
 				67038EB11D5EE101007CC8CD /* Constants.swift in Sources */,
 				67038EBF1D601ABE007CC8CD /* NSData+NavChallenge.swift in Sources */,
 				67038ED51D62C840007CC8CD /* SearchCollectionViewCell.swift in Sources */,
+				67038EE41D62E918007CC8CD /* PlayTrailerViewController.swift in Sources */,
 				67038EC21D617BCA007CC8CD /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

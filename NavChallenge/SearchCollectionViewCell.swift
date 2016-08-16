@@ -13,5 +13,14 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var movieTitleLabel: UILabel!
+    
+    override func drawRect(rect: CGRect) {
+        super.drawRect(rect)
+        
+        self.layer.cornerRadius = 6
+        self.backgroundImageView?.clipsToBounds = true
+        
+        
+    }
 }
 

@@ -25,6 +25,8 @@ class ViewController: UIViewController {
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
     }
+    
+    
 
 
     
@@ -43,6 +45,10 @@ class ViewController: UIViewController {
             selector: "keyboardWillHide:",
             name: UIKeyboardWillHideNotification,
             object: nil)
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
     
