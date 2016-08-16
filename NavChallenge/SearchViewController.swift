@@ -7,13 +7,14 @@
 //
 
 import UIKit
-class SearchViewController: ViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
+class SearchViewController: ViewController, UISearchBarDelegate, /*UITableViewDelegate, UITableViewDataSource,*/ UICollectionViewDelegate, UICollectionViewDataSource {
     
     var results:[Movie] = []
     var resultsLoadPage: Int = 0
     var resultsPageCount: Int = 0
     var query: NSString = ""
     
+    @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,17 @@ class SearchViewController: ViewController, UISearchBarDelegate, UITableViewDele
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.prepareTableViewForKeyboard()
+        //self.prepareTableViewForKeyboard()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBarHidden = false
     }
     
     
@@ -37,7 +48,7 @@ class SearchViewController: ViewController, UISearchBarDelegate, UITableViewDele
     
     func resetResults() {
         results.removeAll()
-        tableView.reloadData()
+        //tableView.reloadData()
         resultsLoadPage     = 0
         resultsPageCount    = 0
     }
@@ -72,7 +83,8 @@ class SearchViewController: ViewController, UISearchBarDelegate, UITableViewDele
                 }
                 let tmpResults  = self.results
                 self.results    = tmpResults + tmpMovie
-                self.tableView.reloadData()
+                //self.tableView.reloadData()
+                self.collectionView.reloadData()
                 
             }, failure: { (operation: AFHTTPRequestOperation?, error: NSError) in
                 self.handleHttpFailure(operation!, error: error)
@@ -80,7 +92,7 @@ class SearchViewController: ViewController, UISearchBarDelegate, UITableViewDele
         )
     }
     
-    
+    /*
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -114,7 +126,92 @@ class SearchViewController: ViewController, UISearchBarDelegate, UITableViewDele
         if indexPath.item == results.count - 1 && resultsLoadPage < resultsPageCount {
             loadNextPage()
         }
+    }*/
+    
+    
+    
+    
+    
+    
+    
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
     }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return results.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SearchResultsCollectionCell", forIndexPath: indexPath) as! SearchCollectionViewCell
+        
+        let movie = results[indexPath.item]
+        cell.movie = movie
+        if let title = movie.title {
+            cell.movieTitleLabel.text = title
+            cell.movieTitleLabel.addShadow()
+        }
+        
+        /*let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.init(rawValue: 1)!)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight] // for supporting device rotation
+        cell.titleView.insertSubview(blurEffectView, atIndex: 0)*/
+        
+        
+        cell.backgroundImageView.image = UIImage(named: "MoviePlaceHolder")
+        //if let imagePath = movie.backdrop_path {
+        if let imagePath = movie.poster_path {
+            let imageUrl = movie.fullImagePath(imagePath, width: 185)
+        
+            NSData.getFromCachedFileOrUrl(imageUrl, completion: { (imageData) in
+                let downloadedImage             = UIImage(data: imageData)
+                cell.backgroundImageView.image  = downloadedImage
+                cell.backgroundImageView.setNeedsDisplay()
+                
+            })
+        }
+        return cell
+    }
+    
+    
+    
+    
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.item == results.count - 1 && resultsLoadPage < resultsPageCount {
+            loadNextPage()
+        }
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    
+        // dynamically size the cells, for consistent size and spacing across different devices
+        
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let spacing = Float(8.0)
+        var mult = Float(1.5)
+        if(UIDevice.isSixPlus()) {
+            // hack for 6 plus
+            mult = Float(2.5)
+        }
+        
+        let positiveSpace = Float(screenSize.size.width) - (spacing * mult)
+        let w = positiveSpace / 2.0
+        let h = w
+        
+        return CGSizeMake(CGFloat(w), CGFloat(h))
+    }
+
+    
+    
+
+    
+    
+    
+    
+    
     
     
     
@@ -149,7 +246,9 @@ class SearchViewController: ViewController, UISearchBarDelegate, UITableViewDele
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "loadMovieSegue" {
         
-            let indexPath   = self.tableView.indexPathForCell(sender as! UITableViewCell)
+            //let indexPath   = self.tableView.indexPathForCell(sender as! UITableViewCell)
+            
+            let indexPath   = self.collectionView.indexPathForCell(sender as! SearchCollectionViewCell)
             let movie       = results[(indexPath?.item)!]
             let vc          = segue.destinationViewController as! DetailViewController
             vc.movie        = movie

@@ -38,11 +38,14 @@ class Movie {
     }
     
     static func loadMovieUrl(movieId: Int) -> String {
-        return "https://api.themoviedb.org/3/movie/" + movieId.description
+        let url = "https://api.themoviedb.org/3/movie/" + movieId.description
+        //print(url)
+        return url
     }
     
-    
-
-    
-    
+    static func checkForTrailersUrl(movieId: Int) -> String {
+        let url = "https://api.themoviedb.org/3/movie/" + movieId.description + "/videos"
+        //print(url)
+        return url        
+    }
 }
