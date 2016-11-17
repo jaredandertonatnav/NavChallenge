@@ -230,6 +230,7 @@
 				TargetAttributes = {
 					67038E9A1D5EDF57007CC8CD = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -454,6 +455,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.andertondev.NavChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = NavChallenge/bridge.h;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -467,6 +469,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.andertondev.NavChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = NavChallenge/bridge.h;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
