@@ -28,6 +28,8 @@
 		67038ED71D62C90B007CC8CD /* UIDevice+NavChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038ED61D62C90B007CC8CD /* UIDevice+NavChallenge.swift */; };
 		67038ED91D62E0C8007CC8CD /* MovieTrailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038ED81D62E0C8007CC8CD /* MovieTrailer.swift */; };
 		67038EE41D62E918007CC8CD /* PlayTrailerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67038EE31D62E918007CC8CD /* PlayTrailerViewController.swift */; };
+		802409261DDE76C40055D6E4 /* test jaxon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802409251DDE76C40055D6E4 /* test jaxon.swift */; };
+		802409291DDE76D50055D6E4 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802409281DDE76D50055D6E4 /* test.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		67038ED81D62E0C8007CC8CD /* MovieTrailer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTrailer.swift; sourceTree = "<group>"; };
 		67038EE31D62E918007CC8CD /* PlayTrailerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayTrailerViewController.swift; sourceTree = "<group>"; };
 		7628A65A0BD0CC3A546D2437 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		802409251DDE76C40055D6E4 /* test jaxon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "test jaxon.swift"; sourceTree = "<group>"; };
+		802409281DDE76D50055D6E4 /* test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		F53C882EF0323371D9697532 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +119,7 @@
 				67038EC31D6182BB007CC8CD /* View Controllers */,
 				67038EA21D5EDF58007CC8CD /* Main.storyboard */,
 				67038EB01D5EE101007CC8CD /* Constants.swift */,
+				802409271DDE76C70055D6E4 /* test group jaxon */,
 				67038E9E1D5EDF57007CC8CD /* AppDelegate.swift */,
 				67038EA51D5EDF58007CC8CD /* Assets.xcassets */,
 				67038EA71D5EDF58007CC8CD /* LaunchScreen.storyboard */,
@@ -145,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				67038EBC1D5EF0B9007CC8CD /* Movie.swift */,
+				802409251DDE76C40055D6E4 /* test jaxon.swift */,
 				67038ED81D62E0C8007CC8CD /* MovieTrailer.swift */,
 				67038ECC1D62AF81007CC8CD /* NavigationController.swift */,
 			);
@@ -193,6 +199,14 @@
 				67038EE31D62E918007CC8CD /* PlayTrailerViewController.swift */,
 			);
 			name = "Play Trailer";
+			sourceTree = "<group>";
+		};
+		802409271DDE76C70055D6E4 /* test group jaxon */ = {
+			isa = PBXGroup;
+			children = (
+				802409281DDE76D50055D6E4 /* test.swift */,
+			);
+			name = "test group jaxon";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,6 +339,8 @@
 				67038ECD1D62AF81007CC8CD /* NavigationController.swift in Sources */,
 				67038EC51D61830F007CC8CD /* AlertController.swift in Sources */,
 				67038EA11D5EDF57007CC8CD /* ViewController.swift in Sources */,
+				802409291DDE76D50055D6E4 /* test.swift in Sources */,
+				802409261DDE76C40055D6E4 /* test jaxon.swift in Sources */,
 				67038EB61D5EE2FF007CC8CD /* UIViewController+NavChallenge.swift in Sources */,
 				67038E9F1D5EDF57007CC8CD /* AppDelegate.swift in Sources */,
 				67038EB31D5EE266007CC8CD /* SearchViewController.swift in Sources */,
